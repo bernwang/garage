@@ -29,7 +29,15 @@ See the [latest documentation](https://garage.readthedocs.org/en/latest/) for
 getting started instructions and detailed APIs.
 
 ## Installation
+Install as git repo:
+```
+conda env create -f environment.yml
+conda activate myenv
+cd path/to/garage/repo
+pip install -e '.[all,dev]'
+```
 
+Install as a python package:
 ```
 pip install --user garage
 ```

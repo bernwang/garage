@@ -300,12 +300,17 @@ class ExperimentTemplate:
         name = options['name']
         if name is None:
             name = options['function'].__name__
+            if 'name' in kwargs:
+                    name = kwargs['name']
         name = cls._augment_name(options, name, kwargs)
         log_dir = options['log_dir']
         if log_dir is None:
+            prefix = options['prefix']
+            if 'prefix' in kwargs:
+                prefix = kwargs['prefix']
             log_dir = ('{data}/local/{prefix}/{name}'.format(
                 data=os.path.join(os.getcwd(), 'data'),
-                prefix=options['prefix'],
+                prefix=prefix,
                 name=name))
         if options['use_existing_dir']:
             os.makedirs(log_dir, exist_ok=True)
